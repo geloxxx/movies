@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bayad Muna Bago Makita ang Link</title>
+  <style>
+    body {
+      background: #0073ea;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      text-align: center;
+      color: #222;
+    }
+    .container {
+      max-width: 420px;
+      margin: 30px auto 40px auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 16px #0002;
+      padding: 24px 16px 32px 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .qr-img {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 1px 8px #0001;
+      background: #fff;
+    }
+    .details {
+      margin: 18px 0 10px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .details .highlight {
+      color: #0073ea;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .note {
+      color: #888;
+      font-size: 14px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+    #status-text {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #0073ea;
+    }
+    button {
+      font-size: 18px;
+      padding: 14px 36px;
+      cursor: not-allowed;
+      border: none;
+      background-color: #aaa;
+      color: white;
+      border-radius: 8px;
+      margin-top: 18px;
+      transition: background 0.2s;
+    }
+    button.enabled {
+      background-color: #00a859;
+      cursor: pointer;
+    }
+    /* Black overlay box style */
+    .black-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .black-overlay p {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      max-width: 600px;
+      background-color: #000;
+      padding: 20px;
+      border-radius: 12px;
+      line-height: 1.4;
+    }
+
+    /* Gallery with one image */
+    .gallery {
+      max-width: 400px;
+      margin: 24px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.15);
+      background: #000;
+      text-align: center;
+      padding: 10px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+    }
+    .caption {
+      color: #0073ea;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 8px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Black overlay box -->
+  <div class="black-overlay" id="blackOverlay">
+    <p>Welcome to porn movie only for just 5 pesos unli watch it and enjoy</p>
+  </div>
+
+  <div class="container">
+    <img class="qr-img" src="https://pplx-res.cloudinary.com/image/upload/v1751449490/user_uploads/78742595/ddd4a04e-70db-4471-a99f-13518351ed1f/GCash-MyQR-02072025173415.PNG.jpg" alt="GCash QR Code" />
+    <div class="note">Magbayad ng <b>5 pesos</b> gamit ang GCash QR code sa itaas.</div>
+    <div class="details">
+      <span class="highlight">RE****O S.</span><br>
+      <span style="color:#888;">Mobile No.:</span> 096• ••••159<br>
+      <span style="color:#bbb;">User ID:</span> ••••••••••38DFMG
+    </div>
+
+    <!-- Gallery with one image -->
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Woman watching" />
+        <div class="caption">Watch and Enjoy</div>
+      </div>
+    </div>
+
+    <p id="status-text">Pagkatapos magbayad, maghintay ng verification...</p>
+    <button id="proceedBtn" disabled>Magpatuloy sa Link</button>
+  </div>
+
+  <script>
+    const proceedBtn = document.getElementById('proceedBtn');
+    const statusText = document.getElementById('status-text');
+    const blackOverlay = document.getElementById('blackOverlay');
+
+    // Automatically hide overlay after 5 seconds (optional)
+    setTimeout(() => {
+      blackOverlay.style.display = 'none';
+    }, 5000);
+
+    // Placeholder function for checking payment status (palitan ng actual backend call)
+    async function checkPaymentStatus() {
+      try {
+        // Simulate payment verified after 10 seconds (demo lang)
+        setTimeout(() => {
+          statusText.textContent = "Bayad na verified! Pwede ka nang magpatuloy.";
+          proceedBtn.disabled = false;
+          proceedBtn.classList.add('enabled');
+          blackOverlay.style.display = 'none';
+        }, 10000);
+      } catch (error) {
+        console.error('Error checking payment status:', error);
+        statusText.textContent = "May problema sa verification. Subukang muli.";
+      }
+    }
+
+    window.onload = () => {
+      checkPaymentStatus();
+    };
+
+    proceedBtn.addEventListener('click', () => {
+      if (!proceedBtn.disabled) {
+        // Redirect muna sa Messenger link bago ma-access ang main link
+        window.location.href = 'https://m.me/giomier.link?hash=AbZfQqM8dZuEwab5&source=qr_link_share';
+      }
+    });
+  </script>
+</body>
+</html>
